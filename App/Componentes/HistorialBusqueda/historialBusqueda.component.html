@@ -1,0 +1,22 @@
+<div class="col-sm-12">
+	<div *ngIf="HayHistorial()" >
+		<div class="col-sm-12">
+			<h3> Historial de Busqueda:</h3>
+		</div>
+
+	<!--	<div *ngFor="let usuario of listaUsuarios" class="col-xs-12 col-sm-12 panel " style="background-color:#6d84c5; color:white;">
+			<div class="col-xs-9 col-sm-9 ">
+				<span style="font-size:20"> {{usuario}}</span>
+			</div>
+			<div class="col-xs-3 col-sm-3 center-block">
+				<button class="btn btn-danger btn-xs ">X</button>
+			</div>
+		</div>-->
+
+			<div class="col-sm-12">
+				<descripcionUsuarioHistorial *ngFor="let usuario of listaUsuarios" [usuario]="usuario" (onEliminar)="eliminarUsuarioHistorial($event)">
+				</descripcionUsuarioHistorial>
+			</div>
+
+	</div>
+</div>

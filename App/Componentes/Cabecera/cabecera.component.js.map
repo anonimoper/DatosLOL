@@ -1,0 +1,1 @@
+{"version":3,"file":"cabecera.component.js","sourceRoot":"","sources":["cabecera.component.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAAwB,eAAe,CAAC,CAAA;AAQxC;IAAA;QACC,eAAU,GAAG,4BAA4B,CAAA;IAC1C,CAAC;IARD;QAAC,gBAAS,CAAC;YACV,QAAQ,EAAE,MAAM,CAAC,EAAE;YACnB,QAAQ,EAAE,UAAU;YACpB,WAAW,EAAE,yBAAyB;SACtC,CAAC;;yBAAA;IAIF,wBAAC;AAAD,CAAC,AAFD,IAEC;AAFY,yBAAiB,oBAE7B,CAAA"}

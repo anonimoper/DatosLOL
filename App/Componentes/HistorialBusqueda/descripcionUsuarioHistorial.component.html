@@ -1,0 +1,23 @@
+<style>
+	.panel:hover {
+		background-color: #3dc0ce !important;
+		-webkit-animation: tiembla 0.9s infinite;
+		
+	}	
+
+	@-webkit-keyframes tiembla{
+	0%  { -webkit-transform:translate(0px,0px); }
+	50% { -webkit-transform:translate( 0px,10px); }
+	100%{ -webkit-transform:translate( 0px, 0px); }
+}
+
+</style>
+
+<div  class="col-xs-12 col-sm-12 panel">
+	<div class="col-xs-9 col-sm-9">
+		{{usuario}}
+	</div>
+	<div class="col-xs-3 col-sm-3">
+		<button class="btn btn-danger " (click)="eliminar()">X</button>
+	</div>
+</div>

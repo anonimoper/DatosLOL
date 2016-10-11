@@ -1,0 +1,85 @@
+<style>
+	.contenedor{
+		height:200px;
+		width:200px;
+	}
+	.frente{
+		background-color:rgba(36, 60, 82, 0.88);
+		border:solid;
+		border-radius:20px;
+		border-color:#c0cfc3;
+	}
+	.frente-oro{
+		background-color:rgb(49, 15, 5);
+		border:solid;
+		border-radius:20px;
+		border-color:#e5a20f;	
+	}
+	.atras{
+		background: rgba(81, 232, 81, 0.68);
+		transform : rotateY(180deg)
+	}
+	.carta{
+		height:100%;
+		width:100%;
+		transition: 2s;
+		transform-style: preserve-3d;
+		margin-left:5%;
+
+	}
+	.carta:hover{
+		transform: rotateY(180deg);
+	}
+	.lado{
+		width:100%;
+		height:100%;
+		backface-visibility : hidden;
+		position:absolute;
+	}
+
+	</style>
+
+<div class="col-sm-12" style="margin-top:10px">
+	<div class="col-sm-2">
+		<historialBusqueda [listaUsuarios] = "listaUsuarios"> </historialBusqueda>
+	</div>
+	<div class="col-sm-10">
+		<div class = "col-sm-3">
+			<form>
+				<div class="input-group" >
+					<input class="form-control" type="Text" name="sku" id="skuInput" required placeholder="Nombre Invocador" #name = "ngModel" [(ngModel)] = "model.name">
+					<span class="input-group-addon" id="basic-addon2" (click)="buscarUsuario()"> Buscar</span>
+				</div>
+			</form>
+		</div>
+
+		<div *ngIf="CargandoAjax"  class="col-sm-12">
+			<img src="App/Public/cargando.gif" class="img-responsive">
+		</div>
+
+		<div *ngIf="!ErrorAjax" class="col-sm-10">
+			<div class="contenedor ">
+				<div class="carta ">
+					<div [ngClass]="ClasesIconoLiga"> 
+						<img [src] ="ImagenLiga" />
+					</div>
+					<div class="lado atras "> 
+						<p> Tipo Ranked: {{TipoRanked}}</p>
+						<p> Liga Ranked: {{LigaRanked}}</p>
+						<p> Division Ranked: {{DivisionRanked}}</p>
+					</div>
+				</div>
+			</div>
+
+			<div  class="col-sm-12 col-xs-12">	
+				<NombreEquipo *ngFor="let equipo of equipos" [equipo] = "equipo"> </NombreEquipo>
+			</div>
+		</div>
+
+
+		<div *ngIf="ErrorAjax" class="col-sm-12"	>
+			<h1> {{mensajeError}} </h1>
+		</div>
+
+	</div>
+</div>
