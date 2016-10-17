@@ -39,12 +39,12 @@
 
 	</style>
 
-<div class="col-sm-12" style="margin-top:10px">
-	<div class="col-sm-2">
+<div class="col-sm-12 col-xs-12" style="margin-top:10px">
+	<div class="col-sm-2 col-xs-12">
 		<historialBusqueda [listaUsuarios] = "listaUsuarios"> </historialBusqueda>
 	</div>
-	<div class="col-sm-10">
-		<div class = "col-sm-3">
+	<div class="col-sm-10 col-xs-12">
+		<div class = "col-sm-3 col-xs-12">
 			<form>
 				<div class="input-group" >
 					<input class="form-control" type="Text" name="sku" id="skuInput" required placeholder="Nombre Invocador" #name = "ngModel" [(ngModel)] = "model.name">
@@ -53,11 +53,11 @@
 			</form>
 		</div>
 
-		<div *ngIf="CargandoAjax"  class="col-sm-12">
+		<div *ngIf="CargandoAjax"  class="col-sm-12 col-xs-12">
 			<img src="App/Public/cargando.gif" class="img-responsive">
 		</div>
 
-		<div *ngIf="!ErrorAjax" class="col-sm-10">
+		<div *ngIf="!ErrorAjax" class="col-sm-10 col-xs-12">
 			<div class="contenedor ">
 				<div class="carta ">
 					<div [ngClass]="ClasesIconoLiga"> 
