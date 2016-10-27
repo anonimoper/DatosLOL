@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<title> Guardar Datos</title>
+
+		<style>
+			.TipoTarea{
+				min-height: 60px;
+				border: 1px solid;
+				margin-bottom: 3px;
+			}
+			.Aviso {
+				background-color: green;
+			}
+
+			.Urgente{
+				background-color: #E53935;
+				color: white;
+				font-family:  Arial;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<h1> Almacenar Datos</h1>
+			</div>
+			<div class="row">
+				<div class="col-sm-7">
+					<div class="form-group col-sm-12">
+						<label> Tipo tarea </label>
+						<input type="text" class="form-control" id="TipoTarea" >
+					</div>
+					<div class="form-group col-sm-12">
+						<label> Descripcion </label>
+						<input type="text" class="form-control" id="DescripcionTarea">
+					</div>
+					<div class="form-group col-sm-12">
+						<button class="btn btn-primary" onclick="AnadirTarea()"> Añadir </button>
+					</div>
+				</div>
+			</div>
+			<div class = "row">
+				<div class="col-sm-12">
+					<H2>Lista Tarea</H2>
+				</div>
+				<div class="col-sm-4" id="ListaTarea">
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script>
+	ActualizarListaTareaDiv( GetListaTarea());
+	function AnadirTarea(){
+		var sTipoTarea			= document.getElementById("TipoTarea").value;
+		var sDescripcionTarea	= document.getElementById("DescripcionTarea").value;
+		console.log(sTipoTarea+" "+sDescripcionTarea);
+		var oListaTarea = GetListaTarea();
+		var oNuevaTarea		= {"TipoTarea": sTipoTarea, "DescripcionTarea": sDescripcionTarea};
+		oListaTarea.Tareas.push(oNuevaTarea);
+		oListaTarea.Contador += 1;
+		localStorage.setItem("ListaTarea", JSON.stringify(oListaTarea));
+
+		ActualizarListaTareaDiv(oListaTarea);
+	}
+
+	function ActualizarListaTareaDiv(oListaTarea){
+		var DivListaTarea		= document.getElementById("ListaTarea");
+		console.log("vamos");
+		debugger
+		var i = 0;
+		var sHtmlUnido	= "";
+		for(i = 0; i < oListaTarea.Tareas.length; i++){
+			var sClaseTarea	= "col-sm-12 TipoTarea "+oListaTarea.Tareas[i].TipoTarea;
+			sHtmlUnido += "<div class='"+sClaseTarea+"'>\
+								<span>Tipo tarea: </span> <span>"+ oListaTarea.Tareas[i].TipoTarea+" </span>\
+								<div >\
+									<span> Descripción: </span><span>"+oListaTarea.Tareas[i].DescripcionTarea+"</span>\
+								</div>\
+							</div>";
+		}
+		DivListaTarea.innerHTML	= sHtmlUnido;
+	}
+
+	function GetListaTarea(){
+		var oListaTarea			= localStorage.getItem("ListaTarea");
+		if (oListaTarea == null){
+			oListaTarea			= {"Contador": 0, "Tareas":[]};
+		}
+		else{
+			oListaTarea		=  JSON.parse(oListaTarea);
+		}
+		return oListaTarea;
+	}
+	</script>
+</html>
